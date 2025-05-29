@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Persona</title>
+    <title>Editar Persona</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,12 +18,12 @@
             width: 100%;
             margin-bottom: 1rem;
         }
-        #message { /* Añadido un ID para el mensaje */
+        #message {
             margin-top: 1rem;
             padding: 0.5rem;
             border: 1px solid #ccc;
             background-color: #f9f9f9;
-            display: none; /* Oculto por defecto */
+            display: none;
         }
         #message.success {
             background-color: #d4edda;
@@ -40,26 +40,31 @@
     </style>
 </head>
 <body>
+    <h1>Editar Persona</h1>
 
-    <h2>Registrar Persona</h2>
+    <form id="editPersonaForm">
+        <label for="edit_primer_nombre">Primer Nombre:</label>
+        <input type="text" id="edit_primer_nombre" name="edit_primer_nombre" required>
 
-    <form id="personaForm">
-        <label for="primer_nombre">Primer Nombre:</label>
-        <input type="text" id="primer_nombre" name="primer_nombre" required>
+        <label for="edit_segundo_nombre">Segundo Nombre:</label>
+        <input type="text" id="edit_segundo_nombre" name="edit_segundo_nombre">
 
-        <label for="segundo_nombre">Segundo Nombre:</label>
-        <input type="text" id="segundo_nombre" name="segundo_nombre"> <label for="primer_apellido">Primer Apellido:</label>
-        <input type="text" id="primer_apellido" name="primer_apellido" required>
+        <label for="edit_primer_apellido">Primer Apellido:</label>
+        <input type="text" id="edit_primer_apellido" name="edit_primer_apellido" required>
 
-        <label for="segundo_apellido">Segundo Apellido:</label>
-        <input type="text" id="segundo_apellido" name="segundo_apellido"> <label for="n_documento">Número de Documento:</label>
-        <input type="text" id="n_documento" name="n_documento" required>
+        <label for="edit_segundo_apellido">Segundo Apellido:</label>
+        <input type="text" id="edit_segundo_apellido" name="edit_segundo_apellido">
 
-        <button type="submit">Guardar Persona</button>
+        <label for="edit_n_documento">Número de Documento:</label>
+        <input type="text" id="edit_n_documento" name="edit_n_documento" required>
+
+        <button type="submit">Actualizar Persona</button>
     </form>
 
-    <div id="message"></div> <hr>
-    <p><a href="personas.html">Ver todas las personas</a></p>
+    <div id="message"></div>
+
+    <hr>
+    <p><a href="personas.html">Volver al listado de personas</a></p>
 
     <script src="./js/api.js"></script>
     <script src="./js/main.js"></script>

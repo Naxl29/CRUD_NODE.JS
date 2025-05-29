@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Archivos estáticos (si usas HTML/CSS en Public)
+// Archivos estáticos
 app.use(express.static(path.join(__dirname, 'src', 'Public')));
 
 // Rutas para personas
