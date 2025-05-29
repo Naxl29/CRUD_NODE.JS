@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Persona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        input, label, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Registrar Persona</h2>
+
+    <form id="personaForm">
+        <label for="primer_nombre">Primer Nombre:</label>
+        <input type="text" id="primer_nombre" name="primer_nombre" required>
+
+        <label for="segundo_nombre">Segundo Nombre:</label>
+        <input type="text" id="segundo_nombre" name="segundo_nombre" required>
+
+        <label for="primer_apellido">Primer Apellido:</label>
+        <input type="text" id="primer_apellido" name="primer_apellido" required>
+
+        <label for="segundo_apellido">Segundo Apellido:</label>
+        <input type="text" id="segundo_apellido" name="segundo_apellido" required>
+
+        <label for="n_documento">Número de Documento:</label>
+        <input type="text" id="n_documento" name="n_documento" required>
+
+        <button type="submit">Guardar Persona</button>
+    </form>
+
+    <div id="mensaje"></div>
+
+    <script>
+        const form = document.getElementById('personaForm');
+        const mensajeDiv = document.getElementById('mensaje');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                primer_nombre: form.primer_nombre.value,
+                segundo_nombre: form.segundo_nombre.value,
+                primer_apellido: form.primer_apellido.value,
+                segundo_apellido: form.segundo_apellido.value,
+                n_documento: form.n_documento.value
+            };
+
+            try {
+                const res = await fetch('/api/persona', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    mensajeDiv.innerText = 'Persona registrada correctamente.';
+                    form.reset();
+                } else {
+                    mensajeDiv.innerText = 'Error: ' + (data.message || 'No se pudo registrar.');
+                }
+            } catch (error) {
+                mensajeDiv.innerText = 'Error al conectar con el servidor.';
+            }
+        });
+    </script>
+
+</body>
+</html>
